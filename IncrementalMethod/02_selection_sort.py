@@ -1,16 +1,18 @@
-a = [3, 6, 9, -8, 1]
+def selection_sort(collection):
+    length = len(collection)
+    for i in range(length - 1):
+        least = i
+        # 找尋小於當下數字的所有數字
+        for k in range(i + 1, length):
+            # 透過迭代 找出最小的數字 的 index
+            if collection[k] < collection[least]:
+                least = k
+        if least != i:
+            # 將最小的數字換到排序位置
+            collection[least], collection[i] = (collection[i], collection[least])
+    return collection
 
-for i in range(len(a)):
-    min_index = i
-
-    # 找尋小於當下數字的所有數字
-    for j in range(i, len(a)):
-        # 透過迭代 找出最小的數字 的 index
-        if a[j] < a[min_index]:
-            min_index = j
-
-    # 將最小的數字換到排序位置
-    a[i], a[min_index] = a[min_index], a[i]
-    print(a) # 確認每一次交換位置的結果
-
-print(f'sorted a:{a}')
+if __name__ == "__main__":
+    user_input = input("Enter numbers separated by a comma:\n").strip()
+    unsorted = [int(item) for item in user_input.split(",")]
+    print(selection_sort(unsorted))
