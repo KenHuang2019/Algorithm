@@ -1,5 +1,11 @@
-a = [3, 6, 9, -8, 1]
-sum_a = 0
-for n in a:
-    sum_a += n
-print(f'sum:{sum_a}')
+def sum_numbers(collection):
+    sum_a = 0
+    for n in collection:
+        sum_a += n
+    return sum_a
+
+
+if __name__ == "__main__":
+    user_input = input("Enter numbers separated by a comma:\n").strip()
+    unsorted = [int(item) for item in user_input.split(",")]
+    print(sum_numbers(unsorted))
